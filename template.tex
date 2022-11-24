@@ -20,7 +20,8 @@ $endif$
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
 
 \usepackage{graphicx} % To include the logo and the signature
 \usepackage{hyperref} % For hyperlinks
@@ -118,23 +119,22 @@ $endif$
 %    \nopagebreak% To prevent line-breaking before the signature.
 %
     \parbox{\textwidth}{% To prevent line-breaking in this block.
-        \vspace{2em}
+        \vspace{1em}
         $if(signature)$
         Sincerely,\\
-        \hbox{\hspace{1cm} \includegraphics[width=6em]{signature/sign.pdf}} \\
+        \hbox{\hspace{1cm} \includegraphics[width=3em]{signature/sign.pdf}} \\
         $else$
         \vspace{3cm}
         $endif$
-        \textbf{Clément Aubert}, Ph.D.\\
-        Assistant Professor in Computer Science\\
-        t: 706 737 1566\\
-        \href{mailto:caubert@augusta.edu}{caubert@augusta.edu}\\
-        \href{https://spots.augusta.edu/caubert/}{spots.augusta.edu/caubert}
-        
+        \textbf{First Last}, Title\\
+        Position\\
+        t: 123 456 7890\\
+        \href{mailto:myemail@myuniv.edu}{myemail@myuniv.edu}\\
+        \href{https://mywebsite.myuniv.edu}{mywebsite.myuniv.edu}
         }
     
     $if(cc)$
-        \vspace{2em}
+        \vspace{1em}
         \begin{tabular}{l l}
         cc: 
         $for(cc)$
@@ -144,7 +144,7 @@ $endif$
     $endif$
         
     $if(attachment)$
-    \vspace{2em}
+    \vspace{1em}
         \begin{tabular}{l l}
         enclosed: 
         $for(attachment)$
@@ -164,11 +164,11 @@ $endif$
 
 \hypersetup{
 	pdfinfo={
-		Title={Letter from Clément Aubert, Augusta University.},
+		Title={Letter from $author$},
 		$if(subject)$
 		Subject={$subject$},
 		$endif$
-		Author={Clément Aubert},
+		Author={$author$},
 	}
 }
 

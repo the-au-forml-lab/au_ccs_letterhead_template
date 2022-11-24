@@ -5,3 +5,6 @@ all: letter.pdf
 
 watch:
 	find *.md | entr -c  make all
+
+preview: all
+	pdftoppm letter.pdf preview -png
