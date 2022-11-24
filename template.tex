@@ -122,11 +122,11 @@ $endif$
         \vspace{1em}
         $if(signature)$
         Sincerely,\\
-        \hbox{\hspace{1cm} \includegraphics[width=3em]{signature/sign.pdf}} \\
+        \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}} \\
         $else$
         \vspace{3cm}
         $endif$
-        \textbf{First Last}, Title\\
+        \textbf{$author$}, Title\\
         Position\\
         t: 123 456 7890\\
         \href{mailto:myemail@myuniv.edu}{myemail@myuniv.edu}\\
@@ -164,7 +164,7 @@ $endif$
 
 \hypersetup{
 	pdfinfo={
-		Title={Letter from $author$},
+		Title={Letter from $author$, Augusta University},
 		$if(subject)$
 		Subject={$subject$},
 		$endif$
