@@ -33,6 +33,7 @@ The file `letter.md` is commented with some indications, and `template.tex` expl
 
 # Changelog
 
+- 2023/02/19: Improved image handling.
 - 2022/11/24: Made the template more generic.
 - 2022/11/22: Added possibility of attaching documents, fixing various inconsistencies.
 - 2020/12/26: Updated / corrected addresses for the school of Computer and Cyber sciences.
