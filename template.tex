@@ -1,4 +1,14 @@
-\documentclass[paper=letter, font=10pt, oneside, BCOR = 0pt]{scrlttr2}
+\documentclass[paper=letter, font=10pt, oneside
+%, BCOR = 0pt % This does not seem to change anything
+]{scrlttr2}
+
+% Current issues:
+% Clean-up source code
+% Center header and footer
+% Check spacing / margins
+% Make sure template still compile if options are not set.
+% Personalise opening and closing
+% 
 
 %%%%%%%%%%%%%
 % Foldmarks %
@@ -29,6 +39,7 @@ $if(attachment)$
 $endif$
 
 %\setlength{\emergencystretch}{3em} % prevent overfull lines
+
 % That's an artifact from pandoc
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
@@ -39,8 +50,8 @@ $endif$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}:
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+    \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \usepackage{hyperref} % For hyperlinks
@@ -128,7 +139,7 @@ $endif$
 % Opening and Closure %
 %%%%%%%%%%%%%%%%%%%%%%% 
 
-\renewcommand*{\raggedsignature}{\raggedright} % We don't want the signature to be centered
+\renewcommand{\raggedsignature}{\raggedright} % We don't want the signature to be centered
 \setkomavar{signature}{
     $if(signature)$
         \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}}\\
