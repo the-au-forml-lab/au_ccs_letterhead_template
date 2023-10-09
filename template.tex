@@ -34,12 +34,38 @@
 \setkomavar{fromurl}{$website$}
 \setkomavar{subject}{$subject$}
 \setkomavar{fromname}{$author$}
+\setkomavar{fromphone}{$phone$}
 
-\KOMAoptions{fromlogo=true}
+%\KOMAoptions{fromlogo=false}
 \setkomavar{fromlogo}{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}}
-\KOMAoptions{fromalign=center}
-\KOMAoptions{firsthead=false}
+% Logo is found from https://augustauniversity.app.box.com/s/hem28kpp3aj4so56p5f7a4abdpplxunl
+\KOMAoptions{backaddress=false}
 
+% shift address
+%\addtoplength{toaddrhpos}{-1cm}
+%\addtoplength{toaddrvpos}{-1.25cm}
+%\setkomavar{nextfoot}{\usekomavar{firstfoot}}
+%\setplength{toaddrhpos}{\useplength{refhpos}}
+%\KOMAoptions{firsthead=false}
+%\setplength{refwidth}{\useplength{toaddrwidth}}
+%\setplength{refhpos}{\paperwidth}
+%\addtoplength{refhpos}{\useplength{toaddrhpos}}
+%\addtoplength[-]{refhpos}{\useplength{toaddrwidth}}
+
+
+%%%%%
+% We want the date *before* the recipient.
+% cf. https://tex.stackexchange.com/a/616345
+\KOMAoptions{refline=dateleft}
+\setplength{refvpos}{\useplength{toaddrvpos}}
+\addtoplength[-2]{refvpos}{\baselineskip}
+\addtoplength{refaftervskip}{\useplength{toaddrheight}}
+\addtoplength[2]{refaftervskip}{\baselineskip}
+
+\AtBeginLetter{
+    \setplength{toaddrhpos}{\useplength{refhpos}}
+}
+ 
 
 %\KOMAoptions{fromalign = off} % We don't display information 
 % Add an address variable
@@ -119,13 +145,10 @@ $endif$
 \usepackage{tabularx} % For the table in the footer
 \usepackage{multirow} % For the table in the footer
 
-\pagestyle{headings}
+%\pagestyle{headings}
 %\renewcommand{\headrulewidth}{0pt} % Remove the line after the header
-%\setkomavar{firsthead}{
-%	\frame{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}}
-%}
-
-
+\setkomavar{firsthead}{\usekomavar{fromlogo}}
+\setplength{firstfootwidth}{
 \setplength{firstheadhpos}{\maxdimen} % This should center the first head. We center the first header
 
 \setkomavar{firstfoot}{%
@@ -144,7 +167,7 @@ $endif$
 	}
 }
 
-\setkomavar{nextfoot}{\usekomavar{firstfoot}}
+%\setkomavar{nextfoot}{\usekomavar{firstfoot}}
 
 % Standards for addresses:
 % Postal Addressing Standards (PUB 28)
@@ -172,9 +195,15 @@ $endif$
     \vspace{1em}
     \textbf{$author$}, Title\\
     Position\\
-    t: 123 456 7890\\
-    \href{mailto:myemail@myuniv.edu}{myemail@myuniv.edu}\\
-    \href{https://mywebsite.myuniv.edu}{mywebsite.myuniv.edu}
+    $if(phone)$
+    t: $phone$\\
+    $endif$
+    $if(email)$
+    \href{mailto:$email$}{$email$}\\
+    $endif$
+    $if(website)$
+    \href{$website$}{$website$}
+    $endif$
 }
 
 %%%%%%%%%%%%%%%%%%%% 
@@ -202,11 +231,20 @@ $endif$
 	{$recipient$}
 	$endif$
 	
-	\opening{Test}
+	\opening{$opening$}
 
 	$body$
 	
+	$if(closing)$
+	\closing{$closing$}
+	$else$
 	\closing{Sincerely,}
+	$endif$
+	
+	$if(ps)$
+	\ps
+	PS: $ps$
+	$endif$
    
     $if(cc)$
         \cc{

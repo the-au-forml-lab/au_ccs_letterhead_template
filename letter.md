@@ -2,7 +2,11 @@
 author: First Last
 email: test@augusta.edu
 website: https://augusta.edu
+phone: "123 456 7890"
 subject: "My very nice letter"
+opening: "Dear members of the committee,"
+closing: "With all my gratitude,"
+ps: "Something I forgot."
 recipient: | 
   | To Whom It May Concern,
   | XYZ University,
