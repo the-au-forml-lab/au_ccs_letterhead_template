@@ -26,10 +26,19 @@
 \setplength{bfoldmarklength}{7mm}
 
 
+%%%%%%%
+% Koma variables about author
+%%%%%%%
+
+\setkomavar{fromemail}{$email$}
+\setkomavar{fromurl}{$website$}
+\setkomavar{subject}{$subject$}
 \setkomavar{fromname}{$author$}
+
 \KOMAoptions{fromlogo=true}
 \setkomavar{fromlogo}{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}}
 \KOMAoptions{fromalign=center}
+\KOMAoptions{firsthead=false}
 
 
 %\KOMAoptions{fromalign = off} % We don't display information 
@@ -78,14 +87,14 @@ $endif$
 % Margins                                          %
 % https://brand.augusta.edu/electronic-letterhead/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[
-	vmargin={150bp, 150bp},
-	hmargin = 100bp,
-	headheight = 6in,
-	footskip = 100bp
-]{geometry}
-\setlength{\parskip}{1em} % Large skip between paragraphs
-\setlength{\parindent}{0pt} % No indentations
+%\usepackage[
+%	vmargin={150bp, 150bp},
+%	hmargin = 100bp,
+%	headheight = 6in,
+%	footskip = 100bp
+%]{geometry}
+%\setlength{\parskip}{1em} % Large skip between paragraphs
+%\setlength{\parindent}{0pt} % No indentations
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Font                                           %

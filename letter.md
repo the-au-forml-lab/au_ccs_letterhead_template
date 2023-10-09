@@ -1,5 +1,7 @@
 ---
 author: First Last
+email: test@augusta.edu
+website: https://augusta.edu
 subject: "My very nice letter"
 recipient: | 
   | To Whom It May Concern,
