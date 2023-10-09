@@ -46,3 +46,6 @@ The lists
 
 #. can be numbered,
 #. and are somehow compact.
+
+This template relies heavily on the "komaletter" class (actually called [scrlttr2](https://ctan.org/pkg/scrlttr2)), whose 567 pages-long documentation is at the same time exhaustive, impressive, and sometimes difficult to navigate. 
+The source code is, however, commented to the best of my abilities, and should help anyone willing to tweak it.

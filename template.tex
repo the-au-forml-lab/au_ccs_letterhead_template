@@ -1,19 +1,24 @@
-\documentclass[paper=letter, font=10pt, oneside,
-%headinclude = true,
-%, BCOR = 0pt % This does not seem to change anything
-]{scrlttr2}
+\documentclass[paper=letter, font=10pt, oneside]{scrlttr2}
+
+%%%%%%%%%%%%%%%%%%%% 
+% Possible improvments:
+% Add "Continue on the next page", cf. https://tex.stackexchange.com/q/236275/
+% Using \usepackage[short]{turnthepage} would be nice, but the indication is in the footer,
+% and I don't know how to move it. Cf. https://tex.stackexchange.com/q/239705/
+%%%%%%%%%%%%%%%%%%%%% 
 
 % Current issues:
-% Clean-up source code
 % Center header and footer
 % Check spacing / margins
 % Make sure template still compile if options are not set.
 % Personalise opening and closing
-% Use variable to populate komavar's variables
 
-% To debug:
+%%%%%%%%%%%%
+% To debug %
+%%%%%%%%%%%%
+
 \LoadLetterOption{visualize}
-\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot}
+\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot,firstfoothpos}
 \usepackage{showframe}
 
 %%%%%%%%%%%%%
@@ -25,10 +30,9 @@
 \setplength{tfoldmarklength}{7mm}
 \setplength{bfoldmarklength}{7mm}
 
-
-%%%%%%%
-% Koma variables about author
-%%%%%%%
+%%%%%%%%%%%%%%%%%%
+% Koma variables %
+%%%%%%%%%%%%%%%%%%
 
 \setkomavar{fromemail}{$email$}
 \setkomavar{fromurl}{$website$}
@@ -36,41 +40,21 @@
 \setkomavar{fromname}{$author$}
 \setkomavar{fromphone}{$phone$}
 
-%\KOMAoptions{fromlogo=false}
-\setkomavar{fromlogo}{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}}
-% Logo is found from https://augustauniversity.app.box.com/s/hem28kpp3aj4so56p5f7a4abdpplxunl
-\KOMAoptions{backaddress=false}
+%%%%%%%%%%%%%%%
+% Some layout %
+%%%%%%%%%%%%%%%
 
-% shift address
-%\addtoplength{toaddrhpos}{-1cm}
-%\addtoplength{toaddrvpos}{-1.25cm}
-%\setkomavar{nextfoot}{\usekomavar{firstfoot}}
-%\setplength{toaddrhpos}{\useplength{refhpos}}
-%\KOMAoptions{firsthead=false}
-%\setplength{refwidth}{\useplength{toaddrwidth}}
-%\setplength{refhpos}{\paperwidth}
-%\addtoplength{refhpos}{\useplength{toaddrhpos}}
-%\addtoplength[-]{refhpos}{\useplength{toaddrwidth}}
-
-
-%%%%%
+\KOMAoptions{backaddress=false}       % We do not dispaly our address on top.
+\KOMAoptions{subject=titled}          % We prefix "Subject:" to the subject.
+\setplength{subjectbeforevskip}{-3em} % Smaller horizontal spacing before the subject
 % We want the date *before* the recipient.
 % cf. https://tex.stackexchange.com/a/616345
 \KOMAoptions{refline=dateleft}
 \setplength{refvpos}{\useplength{toaddrvpos}}
-\addtoplength[-2]{refvpos}{\baselineskip}
 \addtoplength{refaftervskip}{\useplength{toaddrheight}}
-\addtoplength[2]{refaftervskip}{\baselineskip}
-
-\AtBeginLetter{
-    \setplength{toaddrhpos}{\useplength{refhpos}}
-}
- 
-
-%\KOMAoptions{fromalign = off} % We don't display information 
-% Add an address variable
-% \setkomavar{fromaddress}[description ]{contents }
-
+% We align the date with the recipient's address.
+\setplength{toaddrhpos}{8.3em} % Value found through trial-and-error.
+% Ideally I would use refhpos but my current understanding is that this value is 0 until \opening is executed.
 
 % If a mention is added.
 $if(mention)$
@@ -89,8 +73,6 @@ $endif$
 $if(attachment)$
 \usepackage[xetex]{attachfile2}
 $endif$
-
-%\setlength{\emergencystretch}{3em} % prevent overfull lines
 
 % That's an artifact from pandoc
 \providecommand{\tightlist}{%
@@ -113,14 +95,15 @@ $endif$
 % Margins                                          %
 % https://brand.augusta.edu/electronic-letterhead/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage[
-%	vmargin={150bp, 150bp},
+\usepackage[
+	vmargin={150bp, 150bp},
 %	hmargin = 100bp,
 %	headheight = 6in,
-%	footskip = 100bp
-%]{geometry}
-%\setlength{\parskip}{1em} % Large skip between paragraphs
-%\setlength{\parindent}{0pt} % No indentations
+%	footskip = 80bp
+bottom=7em
+]{geometry}
+\setlength{\parskip}{1em} % Large skip between paragraphs
+\setlength{\parindent}{0pt} % No indentations
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Font                                           %
@@ -145,16 +128,27 @@ $endif$
 \usepackage{tabularx} % For the table in the footer
 \usepackage{multirow} % For the table in the footer
 
-%\pagestyle{headings}
+\pagestyle{headings}
 %\renewcommand{\headrulewidth}{0pt} % Remove the line after the header
-\setkomavar{firsthead}{\usekomavar{fromlogo}}
-\setplength{firstfootwidth}{
-\setplength{firstheadhpos}{\maxdimen} % This should center the first head. We center the first header
 
+%% Header
+\setkomavar{firsthead}{\usekomavar{fromlogo}}
+\setplength{firstheadwidth}{103bp} % We adjust the size of the box to the width of the logo (rounded up)
+\setplength{firstheadhpos}{\maxdimen} % This should center the first head. We center the first header
+%\KOMAoptions{fromlogo=false}
+\setkomavar{fromlogo}{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}} % Image format is 8820x6084, so that's ~103x71bp
+% Logo is found from https://augustauniversity.app.box.com/s/hem28kpp3aj4so56p5f7a4abdpplxunl
+
+%% Footer
+% This is to compute the width of the table inside the footer.
+\newplength{footercustom}
+\setplength{footercustom}{\useplength{firstfootwidth}-3.2em} % Value found by trial-and-error
+
+% This is the footer actual definition
 \setkomavar{firstfoot}{%
 	\textcolor{augustablue}{%
 		\scriptsize
-		\begin{tabularx}{\textwidth}{*{3}X l}
+		\begin{tabularx}{\useplength{footercustom}}{*{3}X l}
 			\multicolumn{4}{l}{\textbf{\large School of Computer and Cyber Sciences}}\\[.05in]
 			\multicolumn{4}{l}{\enquote{\emph{A National Academic Center of Excellence in Cyber Defense Education designated by the National Security Agency/Department of Homeland Security.}}}
 			\\[.05in] \hline \noalign{\vskip .1in}
@@ -166,13 +160,28 @@ $endif$
 			\end{tabularx}
 	}
 }
-
-%\setkomavar{nextfoot}{\usekomavar{firstfoot}}
-
 % Standards for addresses:
 % Postal Addressing Standards (PUB 28)
 % https://pe.usps.com/text/pub28/welcome.htm
 % https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf
+
+% Some magic for all the footers to be identical
+\usepackage{scrlayer-scrpage}
+\usepackage{xpatch}
+\KOMAoptions{firstfoot=false}
+\KOMAoptions{footwidth=page}
+\setkomavar{nextfoot}{\usekomavar{firstfoot}}
+%\ModifyLayer[
+% addvoffset=-1ex
+%]{plain.scrheadings.foot.above.line}% shift the footsepline up
+\addtokomafont{pagefoot}{\normalfont}
+\clearpairofpagestyles
+\cfoot*{\usekomavar{firstfoot}}
+\pagestyle{plain}
+\xapptocmd\opening{\thispagestyle{plain}}{}{}% <- first pages will have pagestyle plain too
+
+%\KOMAoptions{footheight=38pt}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Colors                           %
@@ -205,13 +214,6 @@ $endif$
     \href{$website$}{$website$}
     $endif$
 }
-
-%%%%%%%%%%%%%%%%%%%% 
-% Possible improvments:
-% Add "Continue on the next page", cf. https://tex.stackexchange.com/q/236275/
-% Using \usepackage[short]{turnthepage} would be nice, but the indication is in the footer,
-% and I don't know how to move it. Cf. https://tex.stackexchange.com/q/239705/
-%%%%%%%%%%%%%%%%%%%%% 
 
 \hypersetup{
 	pdfinfo={
