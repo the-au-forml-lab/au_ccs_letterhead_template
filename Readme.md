@@ -1,12 +1,12 @@
 # Letterhead for Augusta University
 
 This is a letterhead for Augusta University.
-This template respects the brand strategy of the University and was approved by [Augusta University's graphic designers](https://brand.augusta.edu/).
+This template respects the brand strategy of the University ([as described p. 139 of the Brand Guidelines](https://augustauniversity.app.box.com/s/qma2e8nar4ui6bgg43p5lh9qmnfg3e3o)) and was approved by [Augusta University's graphic designers](https://www.augusta.edu/dcm/marketing/).
 The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.app.box.com/v/brand-templates/file/777468597182).
 
 !["Preview of the letterhead"](preview-1.png)
 
-Comments, improvements: <caubert@augusta.edu> or open an issue at <https://github.com/aubertc/au_ccs_letterhead_template>.
+Comments, improvements: <caubert@augusta.edu> or open an issue at <https://github.com/the-au-forml-lab/au_ccs_letterhead_template>.
 
 Released under GPLv3, cf. <https://www.gnu.org/licenses/gpl-3.0.en.html>
 
