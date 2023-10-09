@@ -1,4 +1,14 @@
-\documentclass{article}
+\documentclass[paper=letter, font=10pt, oneside, BCOR = 0pt]{scrlttr2}
+
+%%%%%%%%%%%%%
+% Foldmarks %
+%%%%%%%%%%%%%
+
+\KOMAoptions{foldmarks=TBmpL}
+\setplength{foldmarkhpos}{0cm}
+\setplength{tfoldmarklength}{7mm}
+\setplength{bfoldmarklength}{7mm}
+
 
 % If a mention is added.
 $if(mention)$
@@ -18,7 +28,8 @@ $if(attachment)$
 \usepackage[xetex]{attachfile2}
 $endif$
 
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+%\setlength{\emergencystretch}{3em} % prevent overfull lines
+% That's an artifact from pandoc
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
 }
@@ -68,17 +79,19 @@ $endif$
 % http://brand.augusta.edu/assets/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \usepackage{zref-lastpage}
-
-\usepackage{fancyhdr}
 \usepackage{tabularx} % For the table in the footer
 \usepackage{multirow} % For the table in the footer
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt} % Remove the line after the header
-\chead{%
-	\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}
+
+\pagestyle{headings}
+%\renewcommand{\headrulewidth}{0pt} % Remove the line after the header
+\setkomavar{firsthead}{
+	\frame{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}}
 }
 
-\cfoot{%
+\setplength{firstheadhpos}{\maxdimen} % This should center the first head. We center the first header
+
+\setkomavar{firstfoot}{%
+    \parbox[b]{\textwidth}{\centering
 	\textcolor{augustablue}{%
 		\scriptsize
 		\begin{tabularx}{\textwidth}{*{3}X l}
@@ -93,6 +106,9 @@ $endif$
 			\end{tabularx}
 	}
 }
+}
+
+\setkomavar{nextfoot}{\usekomavar{firstfoot}}
 
 % Standards for addresses:
 % Postal Addressing Standards (PUB 28)
@@ -111,57 +127,19 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%% 
 % Opening and Closure %
 %%%%%%%%%%%%%%%%%%%%%%% 
-\AtBeginDocument{%
-	\today
-	
-	\bigskip
-	
-	$if(recipient)$
-	$recipient$
-	\par
-	\bigskip
-	$endif$
-}
 
-\AtEndDocument{%
-%    \nopagebreak% To prevent line-breaking before the signature.
-%
-    \parbox{\textwidth}{% To prevent line-breaking in this block.
-        \vspace{1em}
-        $if(signature)$
-        Sincerely,\\
-        \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}} \\
-        $else$
-        \vspace{3cm}
-        $endif$
-        \textbf{$author$}, Title\\
-        Position\\
-        t: 123 456 7890\\
-        \href{mailto:myemail@myuniv.edu}{myemail@myuniv.edu}\\
-        \href{https://mywebsite.myuniv.edu}{mywebsite.myuniv.edu}
-        }
-    
-    $if(cc)$
-        \vspace{1em}
-        \begin{tabular}{l l}
-        cc: 
-        $for(cc)$
-            & $cc$ \\ 
-        $endfor$
-        \end{tabular}
+\renewcommand*{\raggedsignature}{\raggedright} % We don't want the signature to be centered
+\setkomavar{signature}{
+    $if(signature)$
+        \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}}\\
     $endif$
-        
-    $if(attachment)$
     \vspace{1em}
-        \begin{tabular}{l l}
-        enclosed: 
-        $for(attachment)$
-            & \textattachfile[color=augustablue]{$attachment$}{$attachment$} \\ 
-        $endfor$
-        \end{tabular}
-    $endif$
+    \textbf{$author$}, Title\\
+    Position\\
+    t: 123 456 7890\\
+    \href{mailto:myemail@myuniv.edu}{myemail@myuniv.edu}\\
+    \href{https://mywebsite.myuniv.edu}{mywebsite.myuniv.edu}
 }
-
 
 %%%%%%%%%%%%%%%%%%%% 
 % Possible improvments:
@@ -182,5 +160,32 @@ $endif$
 
 
 \begin{document}
+
+    \begin{letter}%
+	$if(recipient)$
+	{$recipient$}
+	$endif$
+	
+	\opening{Test}
+
 	$body$
+	
+	\closing{Sincerely,}
+   
+    $if(cc)$
+        \cc{
+        $for(cc)$
+            $cc$ \\ 
+        $endfor$
+        }
+    $endif$
+        
+    $if(attachment)$
+    \encl{
+        $for(attachment)$
+           \textattachfile[color=augustablue]{$attachment$}{$attachment$} \\ 
+        $endfor$
+        }
+    $endif$
+    \end{letter}
 \end{document}
