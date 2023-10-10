@@ -1,4 +1,5 @@
-\documentclass[paper=letter, font=10pt, oneside]{scrlttr2}
+\documentclass[paper=letter, oneside]{scrlttr2}
+% We set the paper to the letter format, and use one-sided formatting.
 
 %%%%%%%%%%%%%%%%%%%% 
 % Possible improvments:
@@ -8,7 +9,6 @@
 %%%%%%%%%%%%%%%%%%%%% 
 
 % Current issues:
-% Center header and footer
 % Check spacing / margins
 % Make sure template still compile if options are not set.
 % Personalise opening and closing
@@ -17,6 +17,7 @@
 % To debug %
 %%%%%%%%%%%%
 
+% To debug the template, please uncomment the following:
 %\LoadLetterOption{visualize}
 %\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot,firstfoothpos}
 %\usepackage{showframe}
@@ -25,10 +26,10 @@
 % Foldmarks %
 %%%%%%%%%%%%%
 
-\KOMAoptions{foldmarks=TBmpL}
-\setplength{foldmarkhpos}{0cm}
-\setplength{tfoldmarklength}{7mm}
-\setplength{bfoldmarklength}{7mm}
+\KOMAoptions{foldmarks=TBmpL}     % We only want the two horizontal foldmarks.
+\setplength{foldmarkhpos}{0cm}    % We want the foldmarks to touch the edge of the paper. 
+\setplength{tfoldmarklength}{7mm} % Length of the top foldmark.
+\setplength{bfoldmarklength}{7mm} % Length of the bottom foldmark.s
 
 %%%%%%%%%%%%%%%%%%
 % Koma variables %
@@ -44,6 +45,7 @@
 % Some layout %
 %%%%%%%%%%%%%%%
 
+% Date and "from" / "to" fields
 \KOMAoptions{backaddress=false}       % We do not dispaly our address on top.
 \KOMAoptions{subject=titled}          % We prefix "Subject:" to the subject.
 \setplength{subjectbeforevskip}{-3em} % Smaller horizontal spacing before the subject
@@ -54,7 +56,9 @@
 \addtoplength{refaftervskip}{\useplength{toaddrheight}}
 % We align the date with the recipient's address.
 \setplength{toaddrhpos}{7.7em} % Value found through trial-and-error.
-% Ideally I would use refhpos but my current understanding is that this value is 0 until \opening is executed.
+% Ideally we would set the value of toaddrhpos to be the same as refhpos, using
+% \setplength{toaddrhpos}{\useplength{refhpos}}
+% but my current understanding is that this value is 0 until \opening is executed.
 
 % If a mention is added.
 $if(mention)$
@@ -93,21 +97,15 @@ $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Margins                                          %
-% https://brand.augusta.edu/electronic-letterhead/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[
 	vmargin={150bp, 150bp},
-%	hmargin = 100bp,
-%	headheight = 6in,
-%	footskip = 80bp
-    bottom=9em
+    bottom=10em
 ]{geometry}
-\setlength{\parskip}{1em} % Large skip between paragraphs
-\setlength{\parindent}{0pt} % No indentations
+\setlength{\parindent}{0pt} % No indentation
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Font                                           %
-% https://brand.augusta.edu/typography/          %
 % https://github.com/Fonthausen/CrimsonPro       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \usepackage{fontspec} 
@@ -121,23 +119,19 @@ $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Header and footer                %
-% https://brand.augusta.edu/logos/ %
-% http://brand.augusta.edu/assets/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \usepackage{zref-lastpage}
 \usepackage{tabularx} % For the table in the footer
 \usepackage{multirow} % For the table in the footer
-
 \pagestyle{headings}
-%\renewcommand{\headrulewidth}{0pt} % Remove the line after the header
 
 %% Header
+\setkomavar{fromlogo}{%
+    \includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}
+} % Image format is 8820x6084, so that's ~103x71bp
 \setkomavar{firsthead}{\usekomavar{fromlogo}}
 \setplength{firstheadwidth}{103bp} % We adjust the size of the box to the width of the logo (rounded up)
-\setplength{firstheadhpos}{\maxdimen} % This should center the first head. We center the first header
-%\KOMAoptions{fromlogo=false}
-\setkomavar{fromlogo}{\includegraphics[height=71bp]{logo/AugustaUniversity_S_CMYK.eps}} % Image format is 8820x6084, so that's ~103x71bp
-% Logo is found from https://augustauniversity.app.box.com/s/hem28kpp3aj4so56p5f7a4abdpplxunl
+% Logo is from https://augustauniversity.app.box.com/s/hem28kpp3aj4so56p5f7a4abdpplxunl
 
 %% Footer
 % This is to compute the width of the table inside the footer.
@@ -165,27 +159,21 @@ $endif$
 % https://pe.usps.com/text/pub28/welcome.htm
 % https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf
 
-% Some magic for all the footers to be identical
+%% Some magic for all the footers to be identical
+% Cf. https://tex.stackexchange.com/a/218728
 \usepackage{scrlayer-scrpage}
 \usepackage{xpatch}
 \KOMAoptions{firstfoot=false}
 \KOMAoptions{footwidth=page}
 \setkomavar{nextfoot}{\usekomavar{firstfoot}}
-%\ModifyLayer[
-% addvoffset=-1ex
-%]{plain.scrheadings.foot.above.line}% shift the footsepline up
 \addtokomafont{pagefoot}{\normalfont}
 \clearpairofpagestyles
 \cfoot*{\usekomavar{firstfoot}}
 \pagestyle{plain}
 \xapptocmd\opening{\thispagestyle{plain}}{}{}% <- first pages will have pagestyle plain too
 
-%\KOMAoptions{footheight=38pt}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Colors                           %
-% https://brand.augusta.edu/color/ %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \usepackage{xcolor}
 \definecolor{augustablue}{HTML}{002f55}
@@ -221,7 +209,7 @@ $endif$
 	pdfinfo={
 		Title={Letter from $author$, Augusta University},
 		$if(subject)$
-		Subject={$subject$},
+            Subject={$subject$},
 		$endif$
 		Author={$author$},
 	}
