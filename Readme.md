@@ -3,6 +3,7 @@
 This is a letterhead for Augusta University.
 This template respects the brand strategy of the University ([as described p. 139 of the Brand Guidelines](https://augustauniversity.app.box.com/s/qma2e8nar4ui6bgg43p5lh9qmnfg3e3o)) and was approved by [Augusta University's graphic designers](https://www.augusta.edu/dcm/marketing/).
 The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.app.box.com/v/brand-templates/file/777468597182).
+The template adapted to the School of Cyber and Computer Sciences is [also on box](https://augustauniversity.app.box.com/file/913457881161).
 
 !["Preview of the letterhead"](preview-1.png)
 
