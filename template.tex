@@ -17,9 +17,9 @@
 % To debug %
 %%%%%%%%%%%%
 
-\LoadLetterOption{visualize}
-\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot,firstfoothpos}
-\usepackage{showframe}
+%\LoadLetterOption{visualize}
+%\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot,firstfoothpos}
+%\usepackage{showframe}
 
 %%%%%%%%%%%%%
 % Foldmarks %
@@ -202,8 +202,10 @@ $endif$
         \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}}\\
     $endif$
     \vspace{1em}
-    \textbf{$author$}, Title\\
-    Position\\
+    \textbf{$author$} $if(title)$, $title$$endif$\\
+    $if(position)$
+		$position$
+	$endif$\\
     $if(phone)$
     t: $phone$\\
     $endif$
