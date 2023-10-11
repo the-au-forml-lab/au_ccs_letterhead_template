@@ -22,6 +22,31 @@
 %\showfields{head,foot,refline,address,location,firsthead,firstfoot,nextfoot,firstfoothpos}
 %\usepackage{showframe}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pandoc artifacts/packages %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Pandoc makes a couple of assumptions when generating .tex files.
+% Lists can be "tight":
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
+\usepackage{graphicx} % To include the logo and the signature
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}:
+\makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+    \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\usepackage{hyperref}  % For hyperlinks
+\usepackage{csquotes}  % To quote properly
+\usepackage{longtable} % Pandoc generates such tables by default.
+\usepackage{booktabs}  % Required for toprule and the like, cf. https://tex.stackexchange.com/a/95004/
+
 %%%%%%%%%%%%%
 % Foldmarks %
 %%%%%%%%%%%%%
@@ -35,11 +60,33 @@
 % Koma variables %
 %%%%%%%%%%%%%%%%%%
 
+% Some meta-variables are also filled, cf.
+% https://tex.stackexchange.com/a/458691
+\newcommand\mypdfinfo[2]{\hypersetup{pdfinfo={#1=#2}}}
+\newcommand\mypdfinfotitle[2]{\hypersetup{pdfinfo={#1={A letter from #2, Augusta University}}}}
+
+% This one is mandatory
+\setkomavar{fromname}{$if(author)$$author$$else$Janette Doe$endif$}
+\usekomavar[\mypdfinfo{Author}]{fromname}
+\usekomavar[\mypdfinfotitle{Title}]{fromname}
+
+% The following are optional.
+$if(email)$
 \setkomavar{fromemail}{$email$}
+$endif$
+
+$if(website)$
 \setkomavar{fromurl}{$website$}
+$endif$
+
+$if(subject)$
 \setkomavar{subject}{$subject$}
-\setkomavar{fromname}{$author$}
+\usekomavar[\mypdfinfo{Subject}]{subject}
+$endif$
+
+$if(phone)$
 \setkomavar{fromphone}{$phone$}
+$endif$
 
 %%%%%%%%%%%%%%%
 % Some layout %
@@ -48,17 +95,7 @@
 % Date and "from" / "to" fields
 \KOMAoptions{backaddress=false}       % We do not dispaly our address on top.
 \KOMAoptions{subject=titled}          % We prefix "Subject:" to the subject.
-\setplength{subjectbeforevskip}{-3em} % Smaller horizontal spacing before the subject
-% We want the date *before* the recipient.
-% cf. https://tex.stackexchange.com/a/616345
-\KOMAoptions{refline=dateleft}
-\setplength{refvpos}{\useplength{toaddrvpos}}
-\addtoplength{refaftervskip}{\useplength{toaddrheight}}
-% We align the date with the recipient's address.
-\setplength{toaddrhpos}{7.7em} % Value found through trial-and-error.
-% Ideally we would set the value of toaddrhpos to be the same as refhpos, using
-% \setplength{toaddrhpos}{\useplength{refhpos}}
-% but my current understanding is that this value is 0 until \opening is executed.
+\KOMAoptions{refline=dateleft}        % The date is displayed on the left.
 
 % If a mention is added.
 $if(mention)$
@@ -77,23 +114,6 @@ $endif$
 $if(attachment)$
 \usepackage[xetex]{attachfile2}
 $endif$
-
-% That's an artifact from pandoc
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-}
-
-\usepackage{graphicx} % To include the logo and the signature
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}:
-\makeatletter
-    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-    \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\usepackage{hyperref} % For hyperlinks
-\usepackage{csquotes} % To quote properly
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Margins                                          %
@@ -188,50 +208,49 @@ $endif$
 \setkomavar{signature}{
     $if(signature)$
         \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}}\\
+        \vspace{1em}
     $endif$
-    \vspace{1em}
-    \textbf{$author$}$if(title)$, $title$$endif$\\
+    \textbf{\usekomavar{fromname}}$if(title)$, $title$$endif$\\
     $if(position)$
-		$position$
-	$endif$\\
+		$position$\\
+	$endif$
     $if(phone)$
-    t: $phone$\\
+        t: $phone$\\
     $endif$
     $if(email)$
-    \href{mailto:$email$}{$email$}\\
+        \href{mailto:$email$}{$email$}\\
     $endif$
     $if(website)$
-    \href{$website$}{$website$}
+        \href{$website$}{$website$}
     $endif$
 }
-
-\hypersetup{
-	pdfinfo={
-		Title={Letter from $author$, Augusta University},
-		$if(subject)$
-            Subject={$subject$},
-		$endif$
-		Author={$author$},
-	}
-}
-
 
 \begin{document}
 
-    \begin{letter}%
-	$if(recipient)$
-	{$recipient$}
-	$endif$
+    $if(recipient)$
+    % We want the date *before* the recipient.
+    % cf. https://tex.stackexchange.com/a/616345
+    \setplength{refvpos}{\useplength{toaddrvpos}}
+    \addtoplength{refaftervskip}{\useplength{toaddrheight}}
+    % We align the date with the recipient's address.
+    \setplength{toaddrhpos}{7.7em} % Value found through trial-and-error.
+    % Ideally we would set the value of toaddrhpos to be the same as refhpos, using
+    % \setplength{toaddrhpos}{\useplength{refhpos}}
+    % but my current understanding is that this value is 0 until \opening is executed.
+    \setplength{subjectbeforevskip}{-3em} % Smaller horizontal spacing before the subject
+    \begin{letter}{$recipient$}
+    $else$
+    % We reclaim the space that would be taken by the recipient.
+    % cf. https://tex.stackexchange.com/a/431587
+    \addtoplength[-]{refvpos}{\useplength{toaddrheight}}
+    \begin{letter}{~}
+    $endif$
 	
-	\opening{$opening$}
+	\opening{$if(opening)$$opening$$else$To whom it may concern,$endif$}
 
 	$body$
 	
-	$if(closing)$
-	\closing{$closing$}
-	$else$
-	\closing{Sincerely,}
-	$endif$
+	\closing{$if(closing)$$closing$$else$Sincerely,$endif$}
 	
 	$if(ps)$
 	\ps

@@ -24,48 +24,35 @@ Requires:
 
 ## Personalization
 
-### Personal Information
+This template uses [Pandoc variables](https://pandoc.org/MANUAL.html#templates) to personalize some parameters of the letter.
 
-In the file `letter.md`, you **must** edit the following values:
+Variable | Meaning | Default Value | Note
+--- | --- | --- | --- | 
+`author` | Your name (First Last) | Janette Doe | Will be integrated in the meta-data
+`title` | Your title | None | 
+`position` | Your position | None | 
+`recipient` | The name and address of the person you are writing to. | None | Can span over multiple lines.
+`subject` | The subject of your letter | None | Will be integrated in the meta-data
+`recipient` | The name and address of the person you are writing to. | None |
+`opening` | The opening of your letter | To whom it may concern, | 
+`email` | Your email address | None |
+`website` | Your website | None |
+`phone` | Your phone number | None |
+`closing` | How you want your letter to end. | "Sincerely," |
+`ps` | The content of a post-scriptum | None |
+`mention` | Watermark barring your letter | None | Useful to indicate "Draft"
+`signature` | The path to a pdf file containing your signature | None |
+`cc` | A list of persons in copy of your letter | None | 
+`attachment` | A list of files to include | None | See below 
 
-- _author_, please indicate your first and last name,
-- _email_, please indicate your email,
-- _field_, and can adjust the _subject_, the _recipient_, the _mention_, the _signature_, the _cc_ and _attachments_ fields or remove them.
-The file `letter.md` is commented with some indications, and `template.tex` explains its general strategy. It is a [pandoc template file](https://pandoc.org/MANUAL.html#templates) that is written primarily in LaTeX.
-
-<!--
-author: First Last
-email: test@augusta.edu
-website: https://augusta.edu
-phone: "123 456 7890"
-subject: "My very nice letter"
-opening: "Dear members of the committee,"
-closing: "With all my gratitude,"
-ps: "Something I forgot."
-position: "Assistant Professor"
-title: "Dr."
-recipient: | 
-  | To Whom It May Concern,
-  | XYZ University,
-  | 123 Invented St.
-  | City, St, 830291
-mention: "Draft" 
-signature: "signature/sign.pdf"
-cc: 
-    - A student
-    - A colleague
-attachment:
-    - Readme.md
-    - letter.md
-    -->
-    
-### Affiliation
+WARNING, attachments are quite experimental: the attachfile2 package beyond that is not maintained, as far as I know.
 
 In the file `template.tex`, change the content of the "firstfoot" koma variable if you belong to a different school.
 
 
 # Changelog
 
+- 2023/10/11: Switched to `scrlttr2`. This is a major release and breaks retro-compatibility to some extend.
 - 2023/09/14: Adopted the improved CrimsonPro font.
 - 2023/02/19: Improved image handling.
 - 2022/11/24: Made the template more generic.
