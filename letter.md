@@ -2,7 +2,7 @@
 author: First Last
 email: test@augusta.edu
 website: https://augusta.edu
-phone: "123 456 7890"
+phone: "+1 (234) 567 8900"
 subject: "My very nice letter"
 opening: "Dear members of the committee,"
 closing: "With all my gratitude,"
@@ -37,6 +37,16 @@ The lists
 
 #. can be numbered,
 #. and are somehow compact.
+
+And we can even include code!
+
+~~~~ {.haskell .numberLines startFrom="100"}
+-- Courtesy of 
+-- https://pandoc.org/MANUAL.html#extension-fenced_code_attributes
+qsort []     = []
+qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+               qsort (filter (>= x) xs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This template relies heavily on the "komaletter" class (actually called [scrlttr2](https://ctan.org/pkg/scrlttr2)), whose 567 pages-long documentation is at the same time exhaustive, impressive, and sometimes difficult to navigate. 
 The source code is, however, commented to the best of my abilities, and should help anyone willing to tweak it.
