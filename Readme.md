@@ -7,7 +7,7 @@ This template respects the brand strategy of the University (as detailed in its 
 
 The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.app.box.com/v/brand-templates/file/777468597182).
 The template adapted to the School of Cyber and Computer Sciences is [also on box](https://augustauniversity.app.box.com/file/913457881161).
-Note that those templates actually _do not_ respect the brand strategy, since they do not include foldmarks (the small lines on the right side).
+Note that those templates actually _do not_ respect the brand strategy, since they do not include foldmarks (the small lines on the left side).
 
 !["Preview of the letterhead (page 1)"](preview-1.png)
 !["Preview of the letterhead (page 2)"](preview-2.png)
@@ -16,7 +16,7 @@ Note that those templates actually _do not_ respect the brand strategy, since th
 
 Simply run
 
-    make all
+    make
 
 Requires:
 
