@@ -47,6 +47,7 @@ Variable | Meaning | Default Value | Note
 `signature` | The path to a pdf file containing your signature | None | I recommend simply replacing the "signature/sign.pdf" file.
 `cc` | A list of persons in copy of your letter | None | 
 `attachment` | A list of files to include in the pdf | None | See below 
+`compact` | Enter a value (any value) to adopt a more compact signature | Not activated | This impacts only the signature.
 
 WARNING, attachments are quite experimental, as they embed the documents in the pdf itself.
 The [attachfile2](https://www.ctan.org/pkg/attachfile2) package beyond this feature is not maintained, as far as I know, in part because embedding documents in pdf is under-specified.
@@ -56,6 +57,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
+- 2023/10/13: Introduced a "compact" mode for the signature, and fixed a couple of bugs.
 - 2023/10/12: Cleaned some files, clarified the license and the documentation.
 - 2023/10/11: Switched to `scrlttr2`. This is a major release and breaks retro-compatibility to some extend.
 - 2023/09/14: Adopted the improved CrimsonPro font.

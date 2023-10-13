@@ -210,19 +210,11 @@ $endif$
     $if(signature)$
         \hbox{\includegraphics[width=3em]{$signature$}}\\
     $endif$
-    \textbf{\usekomavar{fromname}}$if(title)$, $title$$endif$\\
-    $if(position)$
-		$position$\\
-	$endif$
-    $if(phone)$
-        t: $phone$\\
-    $endif$
-    $if(email)$
-        \href{mailto:$email$}{$email$}\\
-    $endif$
-    $if(website)$
-        \href{$website$}{$website$}
-    $endif$
+    \textbf{\usekomavar{fromname}}$if(title)$, $title$$endif$$if(compact)$, $else$\\$endif$
+    $if(position)$$position$$endif$\\
+    $if(phone)$t: $phone$$if(compact)$, $else$\\$endif$$endif$
+    $if(email)$\href{mailto:$email$}{$email$}$if(compact)$, $else$\\$endif$$endif$
+    $if(website)$\href{$website$}{$website$}$endif$
 }
 
 \begin{document}

@@ -1,27 +1,28 @@
 ---
 author: "First Last"
+title: "Dr."
+position: "Assistant Professor"
 email: "test@augusta.edu"
 website: "https://augusta.edu"
 phone: "+1 (234) 567 8900"
-subject: "My very nice letter"
-opening: "Dear members of the committee,"
-closing: "With all my gratitude,"
-ps: "Something I forgot."
-position: "Assistant Professor"
-title: "Dr."
+signature: "signature/sign.pdf"
 recipient: | 
   | To Whom It May Concern,
   | XYZ University,
   | 123 Invented St.
   | City, St, 830291
+subject: "My very nice letter"
+opening: "Dear members of the committee,"
+closing: "With all my gratitude,"
+ps: "Something I forgot."
 mention: "Draft" 
-signature: "signature/sign.pdf"
 cc: 
     - A student
     - A colleague
 attachment:
     - Readme.md
     - letter.md
+compact: true
 ---
 
 I am using the _Crimson Text_ font, _in italic_, **in bold**, **_in bold and italics_**.
