@@ -123,6 +123,7 @@ $endif$
     bottom=10em
 ]{geometry}
 \setlength{\parindent}{0pt} % No indentation
+\setlength{\parskip}{\baselineskip} % Spacing between paragraphs.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Font                                           %
@@ -207,8 +208,7 @@ $endif$
 \renewcommand{\raggedsignature}{\raggedright} % We don't want the signature to be centered
 \setkomavar{signature}{
     $if(signature)$
-        \hbox{\hspace{1cm} \includegraphics[width=3em]{$signature$}}\\
-        \vspace{1em}
+        \hbox{\includegraphics[width=3em]{$signature$}}\\
     $endif$
     \textbf{\usekomavar{fromname}}$if(title)$, $title$$endif$\\
     $if(position)$

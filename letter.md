@@ -1,7 +1,7 @@
 ---
-author: First Last
-email: test@augusta.edu
-website: https://augusta.edu
+author: "First Last"
+email: "test@augusta.edu"
+website: "https://augusta.edu"
 phone: "+1 (234) 567 8900"
 subject: "My very nice letter"
 opening: "Dear members of the committee,"

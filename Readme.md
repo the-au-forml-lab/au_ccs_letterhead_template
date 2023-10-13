@@ -32,7 +32,7 @@ Note that they can also be set directly from the Makefile, as documented [in the
 Variable | Meaning | Default Value | Note
 --- | --- | --- | --- | 
 `author` | Your name (First Last) | Janette Doe | Will be integrated in the meta-data and is mandatory.
-`title` | Your title | None | If you want to indicate "Dr." or some other title.
+`title` | Your title | None | If you want to indicate "Ph.D." or some other title.
 `position` | Your position | None | 
 `recipient` | The name and address of the person you are writing to. | None | Can span over multiple lines.
 `subject` | The subject of your letter | None | Will be integrated in the meta-data.
