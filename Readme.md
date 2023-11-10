@@ -20,8 +20,17 @@ Simply run
 
 Requires:
 
-- pandoc (tested with pandoc 3.1.6.1)
+- pandoc (tested with pandoc 3.1.9)
 - XeLaTeX (tested with XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023))
+
+If the CrimsonPro font is installed in your system, then you can comment out 
+
+```
+Path = CrimsonPro/,
+```
+
+in template.tex and delete the CrimsonPro/ folder. This way, you will not duplicate the font files every time you write a new letter.
+
 
 ## Personalization
 
@@ -57,6 +66,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
+- 2023/11/10: Brief comment on the option of installing CrimsonPro on the system to avoid duplicating the font files.
 - 2023/10/13: Introduced a "compact" mode for the signature, and fixed a couple of bugs.
 - 2023/10/12: Cleaned some files, clarified the license and the documentation.
 - 2023/10/11: Switched to `scrlttr2`. This is a major release and breaks retro-compatibility to some extend.
