@@ -40,23 +40,25 @@ Note that they can also be set directly from the Makefile, as documented [in the
 
 Variable | Meaning | Default Value | Note
 --- | --- | --- | --- | 
-`author` | Your name (First Last) | Janette Doe | Will be integrated in the meta-data and is mandatory.
+*`author`* | Your name (First Last) | Janette Doe | Will be integrated in the meta-data.
 `title` | Your title | None | If you want to indicate "Ph.D." or some other title.
 `position` | Your position | None | 
 `recipient` | The name and address of the person you are writing to. | None | Can span over multiple lines.
 `subject` | The subject of your letter | None | Will be integrated in the meta-data.
-`recipient` | The name and address of the person you are writing to. | None | This takes a rather large amount of vertical space, but is optional.
-`opening` | The opening of your letter | To whom it may concern, | Mandatory.
+`recipient` | The name and address of the person you are writing to. | None | This takes a rather large amount of vertical space.
+*`opening`* | The opening of your letter | To whom it may concern, | 
 `email` | Your email address | None | A `mailto:` link will be created and added to your signature.
 `website` | Your website | None | A link will be created and added to your signature.
 `phone` | Your phone number | None | I recommend using the [appropriate standard](https://www.itu.int/rec/T-REC-E.123-200102-I/e)
-`closing` | How you want your letter to end. | Sincerely, | Mandatory.
+*`closing`* | How you want your letter to end. | Sincerely, | 
 `ps` | The content of a post-scriptum | None |
 `mention` | Watermark barring your letter | None | Useful to indicate "Draft"
 `signature` | The path to a pdf file containing your signature | None | I recommend simply replacing the "signature/sign.pdf" file.
 `cc` | A list of persons in copy of your letter | None | 
 `attachment` | A list of files to include in the pdf | None | See below 
 `compact` | Enter a value (any value) to adopt a more compact signature | Not activated | This impacts only the signature.
+
+Arguments *`in bold`* are mandatory.
 
 WARNING, attachments are quite experimental, as they embed the documents in the pdf itself.
 The [attachfile2](https://www.ctan.org/pkg/attachfile2) package beyond this feature is not maintained, as far as I know, in part because embedding documents in pdf is under-specified.
