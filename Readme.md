@@ -3,9 +3,9 @@
 ## Presentation
 
 This is a letterhead for Augusta University.
-This template respects the brand strategy of the University (as detailed in its ["Brand Guidelines 7.23 2023.pdf"](https://augustauniversity.app.box.com/s/qma2e8nar4ui6bgg43p5lh9qmnfg3e3o) document, p. 139--140) and was approved by [Augusta University's graphic designers](https://www.augusta.edu/dcm/marketing/).
+This template respects the brand strategy of the University (as detailed in its ["Brand Guidelines 7.25 2024.pdf"](https://augustauniversity.app.box.com/s/nhhsnchgrqf8vao9p68qu5hsfozjojus/file/1585186002774) document, pp. 122--124) and was approved by [Augusta University's graphic designers](https://www.augusta.edu/dcm/marketing/).
 
-The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.app.box.com/v/brand-templates/file/777468597182).
+The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.box.com/s/76c8k3f62pnilp7xd7vs6qqzcvga2so1).
 The template adapted to the School of Cyber and Computer Sciences is [also on box](https://augustauniversity.app.box.com/file/913457881161).
 Note that those templates actually _do not_ respect the brand strategy, since they do not include foldmarks (the small lines on the left side).
 
