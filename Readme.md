@@ -20,8 +20,8 @@ Simply run
 
 Requires:
 
-- pandoc (tested with pandoc 3.1.9)
-- XeLaTeX (tested with XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023))
+- pandoc (tested with pandoc 3.1.9 -- 3.3)
+- XeLaTeX (tested with XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023) -- XeTeX 3.141592653-2.6-0.999996 (TeX Live 2024))
 
 If the CrimsonPro font is installed in your system, then you can comment out 
 
