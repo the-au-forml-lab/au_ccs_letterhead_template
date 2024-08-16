@@ -69,7 +69,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
-- 2024/08/16: Added the possiblity to change "PS:" to a different text.
+- 2024/08/16: Added the possibility to change "PS:" to a different text.
 - 2023/11/10: Brief comment on the option of installing CrimsonPro on the system to avoid duplicating the font files.
 - 2023/10/13: Introduced a "compact" mode for the signature, and fixed a couple of bugs.
 - 2023/10/12: Cleaned some files, clarified the license and the documentation.
