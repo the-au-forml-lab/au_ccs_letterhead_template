@@ -15,6 +15,7 @@ subject: "My very nice letter"
 opening: "Dear members of the committee,"
 closing: "With all my gratitude,"
 ps: "Something I forgot."
+pstext: "*Post scriptum*: "
 mention: "Draft" 
 cc: 
     - A student

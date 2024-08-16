@@ -246,7 +246,7 @@ $endif$
 	
 	$if(ps)$
 	\ps
-	PS: $ps$
+	$if(pstext)$$pstext$$else$PS: $endif$$ps$
 	$endif$
    
     $if(cc)$

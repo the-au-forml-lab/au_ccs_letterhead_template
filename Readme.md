@@ -52,6 +52,7 @@ Variable | Meaning | Default Value | Note
 `phone` | Your phone number | None | I recommend using the [appropriate standard](https://www.itu.int/rec/T-REC-E.123-200102-I/e)
 **`closing`** | How you want your letter to end. | Sincerely, | 
 `ps` | The content of a post-scriptum | None |
+`pstext` | The annotation before the post-scriptum | PS:  | 
 `mention` | Watermark barring your letter | None | Useful to indicate "Draft"
 `signature` | The path to a pdf file containing your signature | None | I recommend simply replacing the "signature/sign.pdf" file.
 `cc` | A list of persons in copy of your letter | None | 
@@ -68,6 +69,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
+- 2024/08/16: Added the possiblity to change "PS:" to a different text.
 - 2023/11/10: Brief comment on the option of installing CrimsonPro on the system to avoid duplicating the font files.
 - 2023/10/13: Introduced a "compact" mode for the signature, and fixed a couple of bugs.
 - 2023/10/12: Cleaned some files, clarified the license and the documentation.
