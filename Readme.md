@@ -3,9 +3,9 @@
 ## Presentation
 
 This is a letterhead for Augusta University.
-This template respects the brand strategy of the University (as detailed in its ["Brand Guidelines 7.25 2024.pdf"](https://augustauniversity.app.box.com/s/nhhsnchgrqf8vao9p68qu5hsfozjojus/file/1585186002774) document, pp. 122--124) and was approved by [Augusta University's graphic designers](https://www.augusta.edu/dcm/marketing/).
+This template respects the [brand strategy](https://brand.augusta.edu/stationery-suites/) of the University (as detailed in its ["Brand Guidelines 7.25 2024.pdf"](https://augustauniversity.app.box.com/s/nhhsnchgrqf8vao9p68qu5hsfozjojus/file/1585186002774) document, pp. 122--124) and was approved by [Augusta University's graphic designers](https://web.archive.org/web/20250210160358/https://www.augusta.edu/dcm/marketing/).
 
-The official docx template can be found on the [DCM](https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.box.com/s/76c8k3f62pnilp7xd7vs6qqzcvga2so1).
+The official docx template can be found on the [DCM](https://web.archive.org/web/20250210160358/https://www.augusta.edu/dcm/marketing/) website, hidden in a [box folder](https://augustauniversity.box.com/s/76c8k3f62pnilp7xd7vs6qqzcvga2so1).
 The template adapted to the School of Cyber and Computer Sciences is [also on box](https://augustauniversity.app.box.com/file/913457881161).
 Note that those templates actually _do not_ respect the brand strategy, since they do not include foldmarks (the small lines on the left side).
 
@@ -22,10 +22,10 @@ make
 
 Requires:
 
-- [pandoc](https://pandoc.org/) (tested with pandoc 3.1.9 -- 3.6.4)
-- [XeLaTeX](https://www.xelatex.org/) (tested with XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023) -- XeTeX 3.141592653-2.6-0.999997 (TeX Live 2025)
+- [pandoc](https://pandoc.org/) (tested with pandoc 3.8.2.1)
+- [XeLaTeX](https://www.xelatex.org/) (tested with XeTeX 3.141592653-2.6-0.999997 (TeX Live 2025))
 
-If the CrimsonPro font is installed in your system, then you can comment out 
+If the [CrimsonPro font](https://github.com/Fonthausen/CrimsonPro) is installed in your system, then you can comment out 
 
 ```
 Path = CrimsonPro/,
@@ -71,6 +71,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
+- 2026/11/05: Updated links and version numbers.
 - 2025/10/01: Improved Readme's readability (hopefully).
 - 2024/08/16: Added the possibility to change "PS:" to a different text.
 - 2023/11/10: Brief comment on the option of installing CrimsonPro on the system to avoid duplicating the font files.
