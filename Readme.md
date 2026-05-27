@@ -22,8 +22,8 @@ make
 
 Requires:
 
-- [pandoc](https://pandoc.org/) (tested with pandoc 3.8.2.1)
-- [XeLaTeX](https://www.xelatex.org/) (tested with XeTeX 3.141592653-2.6-0.999997 (TeX Live 2025))
+- [pandoc](https://pandoc.org/) (tested with pandoc 3.9.0.2)
+- [XeLaTeX](https://www.xelatex.org/) (tested with XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026))
 
 If the [CrimsonPro font](https://github.com/Fonthausen/CrimsonPro) is installed in your system, then you can comment out 
 
@@ -71,7 +71,8 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 
 ## Changelog
 
-- 2026/11/05: Updated links and version numbers.
+- 2026/05/26: Bumped XeTeX and pandoc version, fixed a mistake in the changelog.
+- 2025/11/05: Updated links and version numbers.
 - 2025/10/01: Improved Readme's readability (hopefully).
 - 2024/08/16: Added the possibility to change "PS:" to a different text.
 - 2023/11/10: Brief comment on the option of installing CrimsonPro on the system to avoid duplicating the font files.
