@@ -72,6 +72,7 @@ In the file `template.tex`, change the content of the "firstfoot" koma variable 
 ## Changelog
 
 - 2026/05/26: Bumped XeTeX and pandoc version, fixed a mistake in the changelog.
+- 2026/11/05: Updated links and version numbers.
 - 2025/11/05: Updated links and version numbers.
 - 2025/10/01: Improved Readme's readability (hopefully).
 - 2024/08/16: Added the possibility to change "PS:" to a different text.
